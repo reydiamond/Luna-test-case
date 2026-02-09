@@ -2,6 +2,7 @@ UV = uv run
 
 help:
 	@echo "Команды для разработки:"
+	@echo "  make env       - Создать .env"
 	@echo "  make up        - Запустить Postgres (Docker)"
 	@echo "  make down      - Остановить Postgres (и удалить контейнер)"
 	@echo "  make migrate   - Применить миграции Alembic"
