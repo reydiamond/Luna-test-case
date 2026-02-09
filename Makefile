@@ -18,7 +18,7 @@ down:
 	docker compose down
 
 migrate:
-	docker compose exec app uv run alembic -c migrations/alembic.ini upgrade head
+	docker compose exec app uv run alembic upgrade head
 
 seed:
 	docker compose exec app uv run python test_seed.py
