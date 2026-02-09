@@ -1,6 +1,6 @@
 help:
 	@echo "Команды для разработки:"
-	@echo "  make init      - Создать .env"
+	@echo "  make env     - Создать .env"
 	@echo "  make up        - Запустить все сервисы"
 	@echo "  make down      - Остановить все сервисы"
 	@echo "  make migrate   - Применить миграции Alembic"
