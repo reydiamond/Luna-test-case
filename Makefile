@@ -2,6 +2,7 @@
 
 help:
 	@echo "Доступные команды:"
+	@echo "  make env       - Создать env из экземпляра"
 	@echo "  make up        - Запустить контейнеры"
 	@echo "  make down      - Остановить контейнеры"
 	@echo "  make build     - Пересобрать образы"
@@ -11,6 +12,9 @@ help:
 	@echo "  make shell     - Открыть shell в контейнере"
 	@echo "  make clean     - Остановить и удалить volumes"
 	@echo "  make restart   - Перезапустить контейнеры"
+
+env:
+	cp .env.example .env
 
 up:
 	docker compose up -d
