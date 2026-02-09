@@ -1,15 +1,17 @@
+.PHONY:
+
 help:
-	@echo "Команды для разработки:"
-	@echo "  make env     	- Создать .env"
-	@echo "  make up        - Запустить все сервисы"
-	@echo "  make down      - Остановить все сервисы"
-	@echo "  make migrate   - Применить миграции Alembic"
-	@echo "  make seed      - Заполнить БД тестовыми данными"
-	@echo "  make app       - Запустить приложение"
-
-
-env:
-	cp -n .env.example .env || true
+	@echo "Доступные команды:"
+	@echo "  make up        - Запустить контейнеры"
+	@echo "  make down      - Остановить контейнеры"
+	@echo "  make build     - Пересобрать образы"
+	@echo "  make migrate   - Применить миграции БД"
+	@echo "  make seed      - Загрузить тестовые данные"
+	@echo "  make logs      - Показать логи приложения"
+	@echo "  make shell     - Открыть shell в контейнере"
+	@echo "  make test      - Запустить тесты"
+	@echo "  make clean     - Остановить и удалить volumes"
+	@echo "  make restart   - Перезапустить контейнеры"
 
 up:
 	docker compose up -d
@@ -17,11 +19,26 @@ up:
 down:
 	docker compose down
 
+build:
+	docker compose up -d --build
+
 migrate:
 	docker compose exec app uv run alembic upgrade head
 
 seed:
 	docker compose exec app uv run python test_seed.py
 
-app:
-	docker compose up -d app
+logs:
+	docker compose logs -f app
+
+shell:
+	docker compose exec app bash
+
+test:
+	docker compose exec app uv run pytest
+
+clean:
+	docker compose down -v
+
+restart:
+	docker compose restart app
