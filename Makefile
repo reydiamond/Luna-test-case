@@ -9,6 +9,10 @@ help:
 	@echo "  make app       - Запустить приложение (uvicorn через uv)"
 
 
+env:
+	cp .env.example .env
+	nano .env
+
 up:
 	docker compose up -d postgres
 
