@@ -4,6 +4,7 @@ REST API для справочника организаций с геопоис�
 ```bash
 git clone https://github.com/reydiamond/Luna-test-case.git
 cd Luna-test-case
+make env
 make up
 make migrate
 make seed
@@ -41,6 +42,7 @@ make seed
 
 ### Аутентификация
 Все запросы требуют заголовок: `X-API-Key: my_test_api_key`
+API ключ можно заменить в .env после его инициализации (по умолчанию: admin)
 
 ---
 
