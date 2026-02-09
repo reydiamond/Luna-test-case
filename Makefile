@@ -1,18 +1,15 @@
-UV = uv run
-
 help:
 	@echo "Команды для разработки:"
-	@echo "  make env       - Создать .env"
-	@echo "  make up        - Запустить Postgres (Docker)"
-	@echo "  make down      - Остановить Postgres (и удалить контейнер)"
+	@echo "  make init      - Создать .env"
+	@echo "  make up        - Запустить все сервисы"
+	@echo "  make down      - Остановить все сервисы"
 	@echo "  make migrate   - Применить миграции Alembic"
-	@echo "  make seed      - Заполнить тестовыми данными"
-	@echo "  make app       - Запустить приложение (uvicorn через uv)"
+	@echo "  make seed      - Заполнить БД тестовыми данными"
+	@echo "  make app       - Запустить приложение"
 
 
 env:
-	cp .env.example .env
-	nano .env
+	cp -n .env.example .env || true
 
 up:
 	docker compose up -d postgres
@@ -21,10 +18,10 @@ down:
 	docker compose down
 
 migrate:
-	$(UV) alembic upgrade head
+	docker compose exec app uv run alembic -c migrations/alembic.ini upgrade head
 
 seed:
-	$(UV) python test_seed.py
+	docker compose exec app uv run python test_seed.py
 
 app:
-	$(UV) uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+	docker compose up -d app
