@@ -12,7 +12,7 @@ env:
 	cp -n .env.example .env || true
 
 up:
-	docker compose up -d postgres
+	docker compose up -d
 
 down:
 	docker compose down
