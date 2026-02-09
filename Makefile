@@ -26,6 +26,7 @@ build:
 	docker compose up -d --build
 
 migrate:
+	docker compose exec app uv run alembic revision --autogenerate -m "Initial migration" || true
 	docker compose exec app uv run alembic upgrade head
 
 seed:
