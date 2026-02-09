@@ -1,0 +1,12 @@
+[project]
+name = "lunatest"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.18.3",
+    "asyncpg>=0.31.0",
+    "fastapi[standard]>=0.128.4",
+    "phonenumbers>=9.0.23",
+    "sqlalchemy>=2.0.46",
+]
