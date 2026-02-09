@@ -214,7 +214,7 @@ async def clear():
 
 
 async def main():
-    await clear()
+    # await clear()
 
     await seed()
 
