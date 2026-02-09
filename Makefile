@@ -9,7 +9,6 @@ help:
 	@echo "  make seed      - Загрузить тестовые данные"
 	@echo "  make logs      - Показать логи приложения"
 	@echo "  make shell     - Открыть shell в контейнере"
-	@echo "  make test      - Запустить тесты"
 	@echo "  make clean     - Остановить и удалить volumes"
 	@echo "  make restart   - Перезапустить контейнеры"
 
@@ -33,9 +32,6 @@ logs:
 
 shell:
 	docker compose exec app bash
-
-test:
-	docker compose exec app uv run pytest
 
 clean:
 	docker compose down -v
